@@ -1,0 +1,24 @@
+{
+  "name": "tinyquoter",
+  "version": "1.0.0",
+  "description": "A tiny js plugin for letting users highlight and quote part of a page.",
+  "main": "tinyquoter.js",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "keywords": [
+    "quote",
+    "highlight",
+    "js",
+    "bubble",
+    "social"
+  ],
+  "author": "aruminant",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-gzip": "^1.4.2",
+    "gulp-minify": "^3.1.0"
+  }
+}
