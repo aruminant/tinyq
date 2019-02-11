@@ -12,4 +12,4 @@ A zero dependency JS plugin which allows readers to highligh text within a web p
 </script>
 ```
 
-![demonstration](https://raw.githubusercontent.com/aruminant/tinyq/master/docs/demonstration.png)  
+![demonstration](https://github.com/aruminant/tinyq/raw/master/docs/demonstration.png)  
