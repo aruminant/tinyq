@@ -133,18 +133,16 @@ function insertHighlightOptionNode(selection) {
     var rLeft = Math.min.apply(null, hBounds);
     var rRight = Math.max.apply(null, hBounds);
 
-    var lineHeight = window.getComputedStyle(range.startContainer.parentElement).getPropertyValue('line-height');
-    
     var y = cRects[0].top + window.scrollY - 5;
     var x = rLeft + window.scrollX + ((rRight - rLeft) / 2);
     
-    setStyle(container, 'z-index', 99999);
     document.body.appendChild(container);
 
     var containerHeight = window.getComputedStyle(container).getPropertyValue('height');
     var containerWidth = window.getComputedStyle(container).getPropertyValue('width');
     var cWidth = parseInt(containerWidth.replace('px', ''));
     var bodyWidth = parseInt(window.getComputedStyle(document.body).getPropertyValue('width').replace('px', ''));
+    
     var left = x - cWidth / 2;
     if (left < 0) {
         left = 0;
@@ -152,7 +150,13 @@ function insertHighlightOptionNode(selection) {
         left = bodyWidth - cWidth;
     }
 
-    setStyle(container, 'top', (y - parseInt(containerHeight.replace('px', ''))) + 'px');
+    var top = y - parseInt(containerHeight.replace('px', ''))
+    if (top < 0) {
+        top = 0
+    }
+
+    setStyle(container, 'z-index', 99999);
+    setStyle(container, 'top', top + 'px');
     setStyle(container, 'left',  left + 'px');
     setStyle(container, 'visibility', 'visible');
 }
