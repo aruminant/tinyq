@@ -70,7 +70,7 @@ function generateButton(svgString, onclick) {
         padding: '7px'
     });
 
-    hButton.onclick = onclick;
+    hButton.onclick = hButton.ontouchend = onclick;
 
     return hButton;
 }
@@ -89,11 +89,11 @@ function insertHighlightOptionNode(selection) {
         visibility: 'hidden',
         padding: '0 7px'
     });
-    container.onmousedown = function(e) {
+    container.onmousedown = container.ontouchstart = function(e) {
         e.preventDefault();
         e.stopPropagation();
     };
-    container.onmouseup = function(e) {
+    container.onmouseup = container.ontouchend = function(e) {
         e.stopPropagation();
     };
 
@@ -183,8 +183,8 @@ function init(customConfig) {
     Object.keys(customConfig || {}).forEach(function(k) {
         config[k] = customConfig[k]; 
     });
-    document.onmouseup = showHighlightOptions;
-    document.onmousedown = clear;
+    document.onmouseup = document.ontouchend = showHighlightOptions;
+    document.onmousedown = document.ontouchstart = clear;
 }
 
 window.TinyQ = {
