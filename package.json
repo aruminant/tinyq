@@ -1,6 +1,6 @@
 {
   "name": "tinyquoter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny js plugin for letting users highlight and quote part of a page.",
   "main": "tinyquoter.js",
   "scripts": {
