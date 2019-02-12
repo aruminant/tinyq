@@ -51,9 +51,9 @@ function setStyle(el, obj, val) {
     }
 
     Object.keys(toSerialize).forEach(function(k) {
-       if (toSerialize[k] !== null) {
+        if (toSerialize[k] !== null) {
             newStyles.push(k + ': ' + toSerialize[k]);
-       }
+        }
     });
     el.setAttribute('style', newStyles.join('; '));
 }
@@ -99,6 +99,7 @@ function insertHighlightOptionNode(selection) {
 
     var bubbleOptions = document.createElement('div');
     setStyle(bubbleOptions, {
+        'white-space': 'nowrap',
         'border-radius': '4px',
         display: 'inline-block',
         background: defaultConfig.bubbleColor,
@@ -133,7 +134,7 @@ function insertHighlightOptionNode(selection) {
     var rLeft = Math.min.apply(null, hBounds);
     var rRight = Math.max.apply(null, hBounds);
 
-    var y = cRects[0].top + window.scrollY - 5;
+    var y = cRects[0].top + window.scrollY;
     var x = rLeft + window.scrollX + ((rRight - rLeft) / 2);
     
     document.body.appendChild(container);
@@ -141,13 +142,15 @@ function insertHighlightOptionNode(selection) {
     var containerHeight = window.getComputedStyle(container).getPropertyValue('height');
     var containerWidth = window.getComputedStyle(container).getPropertyValue('width');
     var cWidth = parseInt(containerWidth.replace('px', ''));
-    var bodyWidth = parseInt(window.getComputedStyle(document.body).getPropertyValue('width').replace('px', ''));
+    var windowWidth = window.innerWidth;
     
     var left = x - cWidth / 2;
     if (left < 0) {
-        left = 0;
-    } else if (left + cWidth > bodyWidth) {
-        left = bodyWidth - cWidth;
+        setStyle(container, 'left',  left + 'px');
+    } else if (left + cWidth > windowWidth) {
+        setStyle(container, 'right',  0 + 'px');
+    } else {
+        setStyle(container, 'left',  left + 'px');
     }
 
     var top = y - parseInt(containerHeight.replace('px', ''))
@@ -157,7 +160,6 @@ function insertHighlightOptionNode(selection) {
 
     setStyle(container, 'z-index', 99999);
     setStyle(container, 'top', top + 'px');
-    setStyle(container, 'left',  left + 'px');
     setStyle(container, 'visibility', 'visible');
 }
 
