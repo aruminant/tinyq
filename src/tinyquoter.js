@@ -77,7 +77,7 @@ function generateButton(svgString, onclick) {
 
 function insertHighlightOptionNode(selection) {
     var range = selection.getRangeAt(0);
-    if (range.collapsed || !range.toString()) {
+    if (range.collapsed || !range.toString().trim()) {
         return;
     }
     
